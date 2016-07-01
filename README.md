@@ -1,7 +1,7 @@
 # Rancher Container Configuration
 
 This is a generic sidekick container that writes data from Rancher's
-MetaData API into a standard configuration file (`/config/app.conf`).
+MetaData API into the specified arbitrary file.
 
 This volume can then be mounted into any container using Docker's
 volume aliasing (as of v1.9).
