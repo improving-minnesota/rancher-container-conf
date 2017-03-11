@@ -1,11 +1,11 @@
 [template]
 src = "content.tmpl"
 dest = "{{ getv "/path" }}"
-uid = {{ getv "/uid" 0 }}
-gid = {{ getv "/gid" 0 }}
-mode = "{{ getv "/mode" "0644" }}"
+uid = {{ if exists "/uid" }}{{ getv "/uid" }}{{ else }}0{{ end }}
+gid = {{ if exists "/gid" }}{{ getv "/gid" }}{{ else }}0{{ end}}
+mode = "{{ if exists "/mode"}}{{ getv "/mode" }}{{ else }}0644{{ end }}"
 keys = [
     "/content"
 ]
-check_cmd = "{{ getv "/check_cmd" "" }}"
-reload_cmd = "{{ getv  "/reload_cmd" "" }}"
+check_cmd = "{{ if exists "/check_cmd" }}{{ getv "/check_cmd" }}{{ end }}"
+reload_cmd = "{{ if exists "/reload_cmd" }}{{ getv  "/reload_cmd" }}{{ end }}"
